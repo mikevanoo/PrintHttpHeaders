@@ -1,0 +1,12 @@
+SET BUILD_FOLDER=site
+SET BUILD_ZIP_FILE=%BUILD_FOLDER%.zip
+
+RMDIR /S /Q %BUILD_FOLDER%
+DEL /Q %BUILD_ZIP_FILE%
+
+dotnet publish -c Release -o %BUILD_FOLDER%
+cd %BUILD_FOLDER%
+..\zip ../%BUILD_ZIP_FILE% *
+cd ..
+
+RMDIR /S /Q %BUILD_FOLDER%
